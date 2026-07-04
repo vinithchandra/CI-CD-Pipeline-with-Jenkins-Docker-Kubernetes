@@ -1,6 +1,10 @@
 pipeline {
     agent none
 
+    triggers {
+        pollSCM('H/5 * * * *')
+    }
+
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-creds')
         IMAGE_NAME = "guntivinithchandra/devops-project1"
