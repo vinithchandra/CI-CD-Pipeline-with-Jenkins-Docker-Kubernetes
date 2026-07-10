@@ -46,9 +46,8 @@ pipeline {
         stage('Deploy to Kubernetes') {
             agent any
             steps {
-                sh "sed -i 's|IMAGE_PLACEHOLDER|$IMAGE_NAME:$IMAGE_TAG|' k8s/deployment.yaml"
-                sh 'kubectl apply -f k8s/deployment.yaml'
-                sh 'kubectl apply -f k8s/service.yaml'
+                echo 'Kubernetes deployment skipped - kubectl configuration needed'
+                echo 'To enable: Configure kubectl with proper kubeconfig and add k8s-kubeconfig credential to Jenkins'
             }
         }
     }
